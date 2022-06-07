@@ -1,0 +1,19 @@
+<div>
+  <table>
+    <tr>
+      <th>Index</th>
+      <th>CustomerId</th>
+      <th>AddressId</th>      
+      <th>Address</th>
+      <th>Rank</th>    
+    </tr>
+
+    <tr *ngFor="let address of AddressList index as i">
+      <th>{{i+1}}</th>
+      <th>{{address.id}}</th>
+      <th>{{address.customerId}}</th>
+      <th>{{address.address}}</th>
+      <th>{{address.rank}}</th>
+    </tr>
+  </table>
+</div>

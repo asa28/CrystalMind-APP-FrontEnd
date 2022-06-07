@@ -1,0 +1,23 @@
+table,
+th,
+td {
+  border: 1px solid black;
+}
+
+.updateBtn {
+  color: darkblue;
+  border: 1cm;
+  background-color: aqua;
+  background-size: auto;
+  background: fixed;
+  block-size: auto;
+}
+
+.deleteBtn {
+  color: rgb(139, 0, 0);
+  border: 1cm;
+  background-color: rgb(242, 255, 0);
+  background-size: auto;
+  background: fixed;
+  block-size: auto;
+}

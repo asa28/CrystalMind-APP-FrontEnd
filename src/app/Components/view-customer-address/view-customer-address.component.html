@@ -1,0 +1,47 @@
+<div *ngIf="getAllAddressesbyCustomerId(); then addresses else noaddress"></div>
+
+<ng-template #addresses>
+  <div>
+    <table>
+      <tr>
+        <th>Index</th>
+        <th>AddressId</th>
+        <th>CustomerId</th>      
+        <th>Address</th>
+        <th>Rank</th>    
+      </tr>
+  
+      <tr *ngFor="let address of AddressList index as i">
+        <th>{{i+1}}</th>
+        <th>{{address.id}}</th>
+        <th>{{address.customerId}}</th>
+        <th>{{address.address}}</th>
+        <th>{{address.rank}}</th>
+      </tr>
+    </table>
+  </div>
+  
+</ng-template>
+
+<ng-template #noaddress>
+
+  <div>
+    There is No  Address Saved for this Id <mark>{{routedId}}</mark>
+  </div>
+
+  <br>
+  <br>
+  <br>
+  <div>
+    Would you like to create a new Address for this Id <mark>{{routedId}}</mark>
+  </div>
+
+  <div>
+    <div>
+      <a class="btn btn-success" type="button" [routerLink]="['/createCustomerAddress/',routedId]">Create Address</a>
+    
+      <a class=" btn btn-danger" type="button" (click)="cancel()"> Cancel </a>
+    </div>
+  </div>
+
+</ng-template>

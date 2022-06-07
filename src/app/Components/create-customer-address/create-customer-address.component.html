@@ -1,0 +1,60 @@
+<form #f="ngForm" (ngSubmit)="createCustomerAddress(f)">
+  
+  <div class="form-group">
+    <label for="address"> Address</label>
+    <input
+      required
+      ngModel
+      name="address"
+      #address="ngModel"
+      id="address"
+      type="textarea"
+      class="form-control"/>
+
+    <div class="alert alert-danger" *ngIf="address.touched && !address.valid">
+      Address is Required
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="rank"> Rank Address</label>
+    <input      
+      ngModel
+      #rank="ngModel"
+      name="rank"
+      id="rank"
+      type="number"
+      class="form-control"/>
+  </div>
+
+  <br>
+  <br>
+
+  <button class="btn btn-primary" [disabled]="!f.valid">Create</button>
+</form>
+
+<div hidden>
+  <p>
+    <input 
+      hidden     
+      ngModel
+      #customerId="ngModel"
+      name="customerId"
+      id="customerId"
+      type="text"
+      value="{{fakeCustomerId}}"
+      class="form-control"/>
+  </p>
+</div>
+
+<div>
+  <p>
+    {{ f.value | json }}
+  </p>
+</div>
+
+<div>
+  <p>
+    {{customerAddressModel | json}}
+  </p>
+</div>
