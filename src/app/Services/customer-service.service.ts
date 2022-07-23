@@ -1,6 +1,7 @@
 import { Customer } from 'src/app/Interfaces/Customer';
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
+import { Observable, tap } from 'rxjs';
 
 
 @Injectable({
@@ -24,8 +25,9 @@ export class CustomerServiceService {
     return this.http.get(this.mainURL + this.getAllUrl);
   }
 
-  getCustomerById(id: string) {
-    return this.http.get(this.mainURL + this.getCustomerByIdUrl + id);
+  getCustomerById(id: string): Observable<any> {
+    return this.http.get(this.mainURL + this.getCustomerByIdUrl + id).pipe(tap(response => {
+    }));
   }
 
   postCustomer(customerModel: Customer) {
@@ -39,5 +41,12 @@ export class CustomerServiceService {
   removeCustomer(id: string) {
     return this.http.delete(this.mainURL + this.deleteCustomerUrl + id);
   }
+
+  // initializeAppFactory(httpClient: HttpClient): () => Observable<any> {
+  //   return () => httpClient.get("https://someUrl.com/api/user")
+  //     .pipe(
+  //        tap(user => { ... })
+  //     );
+  //  }
 
 }

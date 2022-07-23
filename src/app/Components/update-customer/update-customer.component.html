@@ -1,1 +1,100 @@
-<p>update-customer works!</p>
+<div *ngIf="isCustomerAvaliable">
+
+<form #f="ngForm" (ngSubmit)="updateCustomer(f)">
+  <div class="form-group">
+    <label for="firstName"> First Name</label>
+
+    <input      
+      required
+      ngModel
+      name="firstName"
+      #firstName="ngModel"
+      id="firstName"
+      type="text"
+      class="form-control"/>
+
+    <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid" >
+      First Name is Required
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="lastName"> Last Name</label>
+
+    <input
+      value="{{customerModel.lastName}}"
+      required
+      ngModel
+      #lastName="ngModel"
+      name="lastName"
+      id="lastName"
+      type="text"
+      class="form-control"/>
+
+    <div class="alert alert-danger" *ngIf="lastName.touched && !lastName.valid">
+      Last Name is Required
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="email"> Email</label>
+    <input
+      value="{{customerModel.email}}"
+      required
+      ngModel
+      #email="ngModel"
+      name="email"
+      id="email"
+      type="text"
+      class="form-control"/>
+
+    <div class="alert alert-danger" *ngIf="email.touched && !email.valid">
+      Email is Required
+    </div>
+  </div>
+
+<div class="form-group">
+    <label for="dateOfBirth">Birthday:</label>
+    <input
+          value="{{customerModel.dateOfBirth}}" 
+          ngModel 
+          required 
+          #dateOfBirth="ngModel" 
+          class="form-control"  
+          type="date" 
+          id="dateOfBirth" 
+          name="dateOfBirth">
+
+          <div class="alert alert-danger" *ngIf="dateOfBirth.touched && !dateOfBirth.valid">
+            DateOfBirth is Required
+          </div>
+</div>
+
+  <div class="radio">
+    <label>
+      <input value="{{customerModel.gender}}" ngModel type="radio" name="gender" value="M">
+      Male
+    </label>
+    <label for=" ">
+      <input value="{{customerModel.gender}}" ngModel type="radio" name="gender" value="F">
+      Female
+    </label>
+  </div>
+
+  <br>
+  <br>
+
+  <button class="btn btn-primary" [disabled]="!f.valid">Create</button>
+</form>
+
+<div>
+  <p>
+    {{ f.value | json }}
+  </p>
+</div>
+
+</div>
+
+<div *ngIf="!isCustomerAddressAvaliable">
+  <a class="btn btn-success" type="button"  [routerLink]="['/createCustomerAddress',routedId]">Create Address</a>
+</div>
